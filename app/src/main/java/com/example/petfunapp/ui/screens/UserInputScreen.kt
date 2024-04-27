@@ -32,7 +32,8 @@ fun UserInputScreen(userInputViewModel:UserInputViewModel) {
                 Spacer(modifier = Modifier.size(20.dp))
                 TextComponent(textValue = "This app will show fun facts on next page based on input provided by you", textSize = 18.sp )
                 Spacer(modifier = Modifier.size(60.dp))
-
+                TextComponent(textValue = "Name", textSize =18.sp )
+                Spacer(modifier = Modifier.size(10.dp))
                 TextFieldComponent(onTextChanged = {
                     userInputViewModel.onEvent(
                         UserDataUiEvents.UserNameEntered(it)

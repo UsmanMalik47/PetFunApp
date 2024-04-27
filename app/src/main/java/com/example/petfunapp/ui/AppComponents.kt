@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -70,6 +72,7 @@ fun TextFieldComponent(
     var currentValue by remember {
         mutableStateOf("")
     }
+    val localfocusManager = LocalFocusManager.current
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         value = currentValue ,
@@ -83,7 +86,10 @@ fun TextFieldComponent(
         textStyle = TextStyle.Default.copy(fontSize = 24.sp),
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done
-        )
+        ),
+        keyboardActions = KeyboardActions {
+            localfocusManager.clearFocus()
+        }
     )
 }
 
